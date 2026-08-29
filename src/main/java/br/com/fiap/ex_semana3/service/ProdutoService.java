@@ -1,6 +1,22 @@
+/*
+Serivce = Regras de negocio
+Fica entre o Controller e o Repository
+
+Controller
+    ↓
+ Service
+    ↓
+Repository
+
+Pense assim:
+Service = cérebro da aplicação.
+
+Ele decide o que deve acontecer.
+
+ */
+
+
 package br.com.fiap.ex_semana3.service;
-
-
 import br.com.fiap.ex_semana3.model.Produto;
 import br.com.fiap.ex_semana3.repository.ProdutoRepository;
 import org.springframework.web.bind.annotation.RestController;

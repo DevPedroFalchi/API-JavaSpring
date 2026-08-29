@@ -1,6 +1,16 @@
+/*
+Controller — recebe as requisições HTTP
+
+recebe a requisição;
+pega os dados enviados pelo cliente;
+chama o Service;
+devolve uma resposta.
+
+
+ */
+
+
 package br.com.fiap.ex_semana3.controller;
-
-
 import br.com.fiap.ex_semana3.dto.ProdutoResponse;
 import br.com.fiap.ex_semana3.mapper.ProdutoMapper;
 import br.com.fiap.ex_semana3.model.Produto;
@@ -19,6 +29,7 @@ public class ProdutoController {
     private final ProdutoService produtoService;
 
     public ProdutoController(ProdutoService produtoService) {
+
         this.produtoService = produtoService;
     }
 
