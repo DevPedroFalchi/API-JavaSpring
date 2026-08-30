@@ -33,7 +33,7 @@ public class ProdutoController {
         this.produtoService = produtoService;
     }
 
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseEntity<List<ProdutoResponse>> findAll(){
         List<Produto> all = this.produtoService.findAll();
         return ResponseEntity.ok(ProdutoMapper.toResponse(all));
@@ -52,6 +52,29 @@ public class ProdutoController {
                 ProdutoMapper.toResponse(salvo)
         );
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) { //Pegue o {id} que veio na URL
+
+        produtoService.delete(id);
+
+        return ResponseEntity.noContent().build(); //A operação deu certo, mas não tenho conteúdo para devolver
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ProdutoResponse> update(
+            @PathVariable Long id,
+            @RequestBody ProdutoRequest request) {
+
+        Produto produto = ProdutoMapper.toModel(request);
+
+        Produto atualizado = produtoService.update(id, produto);
+
+        return ResponseEntity.ok(
+                ProdutoMapper.toResponse(atualizado)
+        );
+    }
+
 
 
 }
