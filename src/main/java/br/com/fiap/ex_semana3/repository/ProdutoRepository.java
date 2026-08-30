@@ -28,5 +28,6 @@ package br.com.fiap.ex_semana3.repository;
 import br.com.fiap.ex_semana3.model.Produto;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+// Quero um repositório para trabalhar com a entidade Produto, cujo ID é do tipo Long
 public interface ProdutoRepository extends JpaRepository<Produto, Long> {
 }

@@ -17,5 +17,12 @@ O cliente manda:
 
 package br.com.fiap.ex_semana3.dto;
 
-public record ProdutoRequest() {
+import java.math.BigDecimal;
+
+// Nao tem o id porque ja é gerado pelo @GeneratedValue da classe Produto
+public record ProdutoRequest(String nome,
+                             BigDecimal preco,
+                             Integer quantidadeEmEstoque){
+
+
 }

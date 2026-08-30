@@ -11,15 +11,15 @@ devolve uma resposta.
 
 
 package br.com.fiap.ex_semana3.controller;
+import br.com.fiap.ex_semana3.dto.ProdutoRequest;
 import br.com.fiap.ex_semana3.dto.ProdutoResponse;
 import br.com.fiap.ex_semana3.mapper.ProdutoMapper;
 import br.com.fiap.ex_semana3.model.Produto;
 import br.com.fiap.ex_semana3.service.ProdutoService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 @RestController
@@ -38,5 +38,20 @@ public class ProdutoController {
         List<Produto> all = this.produtoService.findAll();
         return ResponseEntity.ok(ProdutoMapper.toResponse(all));
     }
+
+
+    @PostMapping
+    public ResponseEntity<ProdutoResponse> save(
+            @RequestBody ProdutoRequest request) {
+
+        Produto produto = ProdutoMapper.toModel(request);
+
+        Produto salvo = produtoService.save(produto);
+
+        return ResponseEntity.ok(
+                ProdutoMapper.toResponse(salvo)
+        );
+    }
+
 
 }

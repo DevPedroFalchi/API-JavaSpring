@@ -8,7 +8,7 @@ atributos da entidade;
 @Entity;
 @Id;
 relacionamentos (@OneToMany, @ManyToOne, etc.);
-getters/setters;
+@getters/setters;
 eventualmente regras simples diretamente relacionadas à entidade.
  */
 
@@ -21,7 +21,6 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.math.BigDecimal;
 
 @Entity
@@ -30,7 +29,7 @@ import java.math.BigDecimal;
 @Setter
 public class Produto {
     @Id
-    @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nome;
@@ -38,6 +37,4 @@ public class Produto {
     private BigDecimal preco;
 
     private Integer quantidadeEmEstoque;
-
-
 }

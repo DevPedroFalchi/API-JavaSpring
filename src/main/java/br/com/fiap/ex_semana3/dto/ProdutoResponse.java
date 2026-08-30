@@ -23,6 +23,12 @@ A resposta:
  */
 
 package br.com.fiap.ex_semana3.dto;
+import java.math.BigDecimal;
 
-public record ProdutoResponse() {
+// essa classe tem o id porque vai devolver o json com todas infos, porque o banco e quem vai gerar esse valor (Id)
+public record ProdutoResponse(Long id,
+                              String nome,
+                              BigDecimal preco,
+                              Integer quantidadeEmEstoque) {
+
 }

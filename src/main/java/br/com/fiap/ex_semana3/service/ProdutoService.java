@@ -19,11 +19,11 @@ Ele decide o que deve acontecer.
 package br.com.fiap.ex_semana3.service;
 import br.com.fiap.ex_semana3.model.Produto;
 import br.com.fiap.ex_semana3.repository.ProdutoRepository;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@RestController
+@Service
 public class ProdutoService {
 
     private final ProdutoRepository produtoRepository;
