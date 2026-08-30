@@ -38,8 +38,14 @@ public class ProdutoService {
     }                                               //Depois, qualquer método do Service pode usar this.produtoRepository
 
     public List<Produto> findAll(){
-        return this.produtoRepository.findAll();
+        return this.produtoRepository.findAll();// GET geral produtos
     }
+
+    public Produto findById(Long id) { // GET por Id
+        return produtoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+    }
+
 
     public Produto save(Produto produto){
         return this.produtoRepository.save(produto);

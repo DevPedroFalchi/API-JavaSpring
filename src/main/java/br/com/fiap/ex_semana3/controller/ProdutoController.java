@@ -33,12 +33,22 @@ public class ProdutoController {
         this.produtoService = produtoService;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping // GET geral produtos
     public ResponseEntity<List<ProdutoResponse>> findAll(){
         List<Produto> all = this.produtoService.findAll();
         return ResponseEntity.ok(ProdutoMapper.toResponse(all));
     }
 
+    @GetMapping("/{id}") //GET produtos por Id
+    public ResponseEntity<ProdutoResponse> findById(
+            @PathVariable Long id) {
+
+        Produto produto = produtoService.findById(id);
+
+        return ResponseEntity.ok(
+                ProdutoMapper.toResponse(produto)
+        );
+    }
 
     @PostMapping
     public ResponseEntity<ProdutoResponse> save(
@@ -74,7 +84,5 @@ public class ProdutoController {
                 ProdutoMapper.toResponse(atualizado)
         );
     }
-
-
 
 }
