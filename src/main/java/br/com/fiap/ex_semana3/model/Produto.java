@@ -37,4 +37,6 @@ public class Produto {
     private BigDecimal preco;
 
     private Integer quantidadeEmEstoque;
+
+    private String cor;
 }

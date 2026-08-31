@@ -59,18 +59,41 @@ public class ProdutoService {
 
         Produto produtoExistente = produtoRepository.findById(id) //Repository, existe um produto com esse ID?
                 .orElseThrow(() -> // se encontrou continua, senao lança erro
-                        new RuntimeException("Produto não encontrado")
-                );
+                        new RuntimeException("Produto não encontrado"));
 
         produtoExistente.setNome(produto.getNome()); //Estamos pegando os dados novos e colocando no produto que já existe
         produtoExistente.setPreco(produto.getPreco());
-        produtoExistente.setQuantidadeEmEstoque(
-                produto.getQuantidadeEmEstoque()
-        );
+        produtoExistente.setQuantidadeEmEstoque(produto.getQuantidadeEmEstoque());
+        produtoExistente.setCor(produto.getCor());
 
         return produtoRepository.save(produtoExistente);
     }
 
+    public Produto patch(Long id, Produto produto) {
 
+        Produto produtoExistente = produtoRepository.findById(id)
+                .orElseThrow(() ->
+                        new RuntimeException("Produto não encontrado"));
+
+        if (produto.getNome() != null) {
+            produtoExistente.setNome(produto.getNome());
+        }
+
+        if (produto.getPreco() != null) {
+            produtoExistente.setPreco(produto.getPreco());
+        }
+
+        if (produto.getQuantidadeEmEstoque() != null) {
+            produtoExistente.setQuantidadeEmEstoque(
+                    produto.getQuantidadeEmEstoque()
+            );
+        }
+
+        if (produto.getCor() != null) {
+            produtoExistente.setCor(produto.getCor());
+        }
+
+        return produtoRepository.save(produtoExistente);
+    }
 
 }

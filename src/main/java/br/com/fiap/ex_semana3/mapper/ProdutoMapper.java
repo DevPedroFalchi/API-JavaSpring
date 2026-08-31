@@ -30,6 +30,7 @@ public class ProdutoMapper {
         produto.setNome(request.nome());
         produto.setPreco(request.preco());
         produto.setQuantidadeEmEstoque(request.quantidadeEmEstoque());
+        produto.setCor(request.cor());
 
         return produto;
     }
@@ -40,7 +41,8 @@ public class ProdutoMapper {
                 produto.getId(),
                 produto.getNome(),
                 produto.getPreco(),
-                produto.getQuantidadeEmEstoque()
+                produto.getQuantidadeEmEstoque(),
+                produto.getCor()
         );
     }
 

@@ -22,7 +22,6 @@ import java.math.BigDecimal;
 // Nao tem o id porque ja é gerado pelo @GeneratedValue da classe Produto
 public record ProdutoRequest(String nome,
                              BigDecimal preco,
-                             Integer quantidadeEmEstoque){
-
-
+                             Integer quantidadeEmEstoque,
+                             String cor){
 }

@@ -85,4 +85,19 @@ public class ProdutoController {
         );
     }
 
+    @PatchMapping("/{id}")
+    public ResponseEntity<ProdutoResponse> patch(
+            @PathVariable Long id,
+            @RequestBody ProdutoRequest request){
+
+        Produto produto = ProdutoMapper.toModel(request);
+        Produto atualizado = produtoService.patch(
+                id,
+                produto);
+
+        return ResponseEntity.ok(
+                ProdutoMapper.toResponse(atualizado)
+        );
+    }
+
 }
